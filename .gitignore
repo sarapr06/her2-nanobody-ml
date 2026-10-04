@@ -1,13 +1,15 @@
-# Confidential dataset and anything derived from it. Never commit.
+# Confidential dataset: raw sequences and labels. Never commit.
 data/
-*.csv
+train.csv
+val.csv
+test_public.csv
+test_private.csv
+
+# Embedding caches (derived from the dataset, and large)
 *.npz
 *.npy
 embeddings/
-results/
-
-# Generated documents
-*.pdf
+embeddings_cdr3/
 
 # Environments and caches
 .venv/
@@ -16,8 +18,3 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 wandb/
-
-# Reports describe the confidential dataset's statistical profile; kept out of the
-# public repository and delivered with the submission instead.
-docs/REPORT.md
-docs/mini_overview.md

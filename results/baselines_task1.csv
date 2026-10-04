@@ -1,0 +1,5 @@
+model,val_auroc
+majority class,0.5
+1-mer composition + logreg,0.7208846314260998
+1-NN 3-mer retrieval,0.9139968487394957
+3-mer TF-IDF + logreg,0.9429717429251112

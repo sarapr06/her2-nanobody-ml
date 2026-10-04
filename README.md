@@ -17,7 +17,9 @@ Two supervised tasks over a VHH (nanobody) library screened against HER2:
 
 Within-class ρ is the figure that matters in Task 2: overall ρ is dominated by the
 binder/non-binder gap, so a pure classifier reaches ρ ≈ 0.63–0.84 with within-class ρ
-indistinguishable from zero.
+indistinguishable from zero. [`docs/REPORT.pdf`](docs/REPORT.pdf) has the full analysis;
+[`docs/mini_overview.pdf`](docs/mini_overview.pdf) places ten models on the nanobody
+design pipeline.
 
 ## Three findings
 
@@ -34,6 +36,7 @@ result, where the representation is decisive and the classifier incidental.
 pooling, on the reasoning that averaging over ~129 residues dilutes the ~15 that determine
 binding. Measured, it is worse on both tasks and loses about a third of within-class ρ. The
 dispersion statistic I had reasoned from measures variability, not discriminative utility.
+See [`docs/REPORT.md`](docs/REPORT.md) §5.
 
 ## Layout
 
@@ -46,7 +49,8 @@ src/nanobody/data.py  Loading, split verification, the feature allowlist
 src/nanobody/metrics.py  Metric bundles matching the graders, including within-class ρ
 notebooks/            Colab notebook for the GPU embedding pass
 tests/                Pooling correctness, CDR3 anchors, metric edge cases
-docs/                 Print stylesheet for the report build
+docs/                 Report and pipeline overview (markdown and PDF)
+results/              Predictions, per-model metrics, ablation tables
 ```
 
 ## Running it
@@ -88,7 +92,9 @@ fails if pooling is replaced by a naive `.mean(dim=1)`.
 
 ## Data
 
-The dataset is confidential and is **not** in this repository, nor are the written report
-and pipeline overview, which describe its statistical profile. `.gitignore` excludes
-`data/`, every `.csv` and `.npz`, the embedding caches and both documents. The scripts
-expect `../data/` relative to the repository root.
+The dataset is confidential and is **not** in this repository. `.gitignore` excludes
+`data/`, the raw split files and the embedding caches. The scripts expect `../data/`
+relative to the repository root.
+
+`results/` holds the submitted predictions and the measured metrics, which are derived
+outputs rather than source data.

@@ -1,0 +1,35 @@
+{
+  "model": "two_stage",
+  "combine": "expected_rank",
+  "layer": 24,
+  "pooling": "whole",
+  "pi": 0.3828908554572271,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "results": {
+    "two_stage": {
+      "spearman": 0.6517966394329471,
+      "pearson": 0.3621350840622993,
+      "mae": 4.593253312248007,
+      "r2": -0.0032145801222278614,
+      "within_binders": 0.11459742019198031,
+      "within_non_binders": 0.12491514165178479,
+      "within_mean": 0.11975628092188255,
+      "spearman_std": 0.017790468506682554
+    },
+    "two_stage_seed_ensemble": {
+      "spearman": 0.669477911441455,
+      "pearson": 0.36928139116303693,
+      "mae": 4.593199005418568,
+      "r2": -0.0031992280653110328,
+      "within_binders": 0.11748651640824403,
+      "within_non_binders": 0.1326147364879756,
+      "n_binders": 1087,
+      "n_non_binders": 1904,
+      "within_mean": 0.12505062644810983
+    }
+  }
+}
