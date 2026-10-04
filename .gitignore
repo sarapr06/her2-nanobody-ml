@@ -1,0 +1,23 @@
+# Confidential dataset and anything derived from it. Never commit.
+data/
+*.csv
+*.npz
+*.npy
+embeddings/
+results/
+
+# Generated documents
+*.pdf
+
+# Environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+wandb/
+
+# Reports describe the confidential dataset's statistical profile; kept out of the
+# public repository and delivered with the submission instead.
+docs/REPORT.md
+docs/mini_overview.md

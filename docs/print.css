@@ -1,0 +1,139 @@
+/* Print stylesheet for REPORT.pdf and mini_overview.pdf. Built by ../build_pdf.sh.
+ *
+ * Readability decisions:
+ *  - Measure is constrained to ~95mm of text at 10pt, giving roughly 70-80 characters
+ *    per line. Full-width A4 at this size runs past 110 characters, which is well above
+ *    the comfortable range for continuous prose.
+ *  - Leading is 1.5 for body text. Tables and code sit tighter, since neither is read
+ *    as continuous prose.
+ *  - Headings are separated by space above rather than rules, except h2, where a hairline
+ *    helps locate section boundaries in a dense six-page document.
+ *  - Page-break rules keep headings attached to their following text and prevent tables
+ *    from splitting across pages.
+ */
+
+@page {
+  size: A4;
+  margin: 16mm 18mm 14mm;
+  /* constrain the measure via page margins so tables still span the text block */
+}
+
+body {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Charter", "Georgia", "Times New Roman", serif;
+  font-size: 9.6pt;
+  line-height: 1.45;
+  color: #1a1a1a;
+  text-align: left;
+  hyphens: auto;
+}
+
+/* ---- headings ---- */
+
+h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17pt;
+  line-height: 1.2;
+  margin: 0 0 14pt;
+  letter-spacing: -0.2pt;
+}
+
+h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12pt;
+  margin: 14pt 0 5pt;
+  padding-bottom: 2pt;
+  border-bottom: 0.5pt solid #c8c8c8;
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10.5pt;
+  margin: 10pt 0 3.5pt;
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+h2 + p, h3 + p { margin-top: 0; }
+
+/* ---- body ---- */
+
+p { margin: 0 0 6pt; orphans: 2; widows: 2; }
+
+ul, ol { margin: 0 0 7pt; padding-left: 16pt; }
+li { margin: 0 0 3pt; }
+li > p { margin-bottom: 3pt; }
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ---- tables ---- */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8pt 0 10pt;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8.4pt;
+  line-height: 1.32;
+  break-inside: avoid;
+}
+
+th, td {
+  border-bottom: 0.4pt solid #d5d5d5;
+  padding: 3pt 5pt 3pt 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  border-bottom: 0.8pt solid #808080;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Numeric columns read better right-aligned, but the first column is always a label. */
+td:not(:first-child), th:not(:first-child) { padding-left: 5pt; }
+
+/* ---- code ---- */
+
+code {
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  font-size: 8.6pt;
+  background: #f2f2f2;
+  padding: 0.5pt 2pt;
+  border-radius: 1.5pt;
+}
+
+pre {
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  font-size: 8.2pt;
+  line-height: 1.35;
+  background: #f7f7f7;
+  border-left: 1.5pt solid #b0b0b0;
+  padding: 5pt 7pt;
+  margin: 7pt 0;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  break-inside: avoid;
+}
+
+pre code { background: none; padding: 0; font-size: inherit; }
+
+/* ---- quotes ---- */
+
+blockquote {
+  margin: 7pt 0;
+  padding: 4pt 9pt;
+  background: #f7f7f7;
+  border-left: 2pt solid #9a9a9a;
+  font-size: 9.4pt;
+}
+
+blockquote p:last-child { margin-bottom: 0; }
+
+hr { border: none; border-top: 0.5pt solid #d5d5d5; margin: 12pt 0; }

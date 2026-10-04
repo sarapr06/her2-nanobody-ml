@@ -1,0 +1,31 @@
+[project]
+name = "her2-nanobody"
+version = "0.1.0"
+description = "HER2 nanobody binder classification (Task 1) and binding-strength regression (Task 2)"
+# 3.12+ because the `esm` package (the embed extra) requires it. This also matches
+# the Python that Colab ships, which is where the embedding step is meant to run.
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+    "torch>=2.2",
+    "wandb>=0.16",
+]
+
+[project.optional-dependencies]
+# Only needed to run embed_esm.py. The `esm` package registers the custom
+# `esmc` architecture with transformers; without it from_pretrained cannot
+# resolve biohub/ESMC-300M.
+embed = [
+    "transformers>=4.40",
+    "esm @ git+https://github.com/Biohub/esm.git@main",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nanobody"]
